@@ -16,3 +16,6 @@ SELECT COUNT(*)
 FROM [Order Details] od
 INNER JOIN [Alphabetical list of products] p
 ON od.Productid = p.ProductID;
+
+
+SE
