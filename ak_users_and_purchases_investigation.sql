@@ -29,3 +29,9 @@ INSERT INTO ak_UserPurchases
 VALUES(99, GETDATE(), 9.99);
 
 DELETE FROM ak_UserPurchases;
+
+SELECT 
+    *
+FROM ak_Users u 
+LEFT OUTER JOIN ak_UserPurchases up
+ON u.Id = up.UserId;
