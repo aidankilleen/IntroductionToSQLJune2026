@@ -51,7 +51,19 @@ INNER JOIN
     ) ot
     ON o.OrderID = ot.OrderID;
 
+SELECT * FROM ak_OrderSubtotal;
+
+SELECT 
+    cu.CustomerID, o.OrderID, ot.OrderValue
+FROM Customers cu
+INNER JOIN Orders o
+ON cu.CustomerID = o.CustomerID
+INNER JOIN ak_OrderSubtotal ot
+ON o.OrderID = ot.OrderID;
+
 -- simple use of a subquery 
+
+
 
 DELETE FROM aik_Customers;
 
