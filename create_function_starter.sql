@@ -12,7 +12,7 @@ GO
 -- Create Date: <Create Date, , >
 -- Description: <Description, , >
 -- =============================================
-CREATE FUNCTION dbo.LineValue
+CREATE OR ALTER FUNCTION dbo.akLineValue
 (
     -- Add the parameters for the function here
     @UnitPrice money,
