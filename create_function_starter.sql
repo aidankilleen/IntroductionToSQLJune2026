@@ -8,9 +8,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:      <Author, , Name>
--- Create Date: <Create Date, , >
--- Description: <Description, , >
+-- Author:      Aidan 
+-- Create Date: 24 June 2026
+-- Description: Calculate the LineValue for [Order Details] records
 -- =============================================
 CREATE OR ALTER FUNCTION dbo.akLineValue
 (
@@ -25,7 +25,7 @@ BEGIN
     -- Declare the return variable here
     DECLARE @LineValue money;
 
-    SELECT @LineValue = 9.99;
+    SELECT @LineValue = @UnitPrice * @Quantity * (1 - @Discount);
 
     -- Return the result of the function
     RETURN @LineValue;
