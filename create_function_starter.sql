@@ -12,21 +12,22 @@ GO
 -- Create Date: <Create Date, , >
 -- Description: <Description, , >
 -- =============================================
-CREATE FUNCTION <Scalar_Function_Name, sysname, FunctionName>
+CREATE FUNCTION dbo.LineValue
 (
     -- Add the parameters for the function here
-    <@Param1, sysname, @p1> <Data_Type_For_Param1, , int>
+    @UnitPrice money,
+    @Quantity smallint,
+    @Discount real
 )
-RETURNS <Function_Data_Type, ,int>
+RETURNS money
 AS
 BEGIN
     -- Declare the return variable here
-    DECLARE <@ResultVar, sysname, @Result> <Function_Data_Type, ,int>
+    DECLARE @LineValue money;
 
-    -- Add the T-SQL statements to compute the return value here
-    SELECT <@ResultVar, sysname, @Result> = <@Param1, sysname, @p1>
+    SELECT @LineValue = 9.99;
 
     -- Return the result of the function
-    RETURN <@ResultVar, sysname, @Result>
+    RETURN @LineValue;
 END
 GO
