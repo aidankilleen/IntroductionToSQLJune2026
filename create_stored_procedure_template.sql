@@ -5,15 +5,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:      <Author, , Name>
--- Create Date: <Create Date, , >
--- Description: <Description, , >
+-- Author:      Aidan
+-- Create Date: 24/06/2026
+-- Description: Count Customers and Suppliers for the specified country
 -- =============================================
-CREATE PROCEDURE <Procedure_Name, sysname, ProcedureName>
+CREATE OR ALTER PROCEDURE sp_akCustomerCountForCountry
 (
-    -- Add the parameters for the stored procedure here
-    <@Param1, sysname, @p1> <Datatype_For_Param1, , int> = <Default_Value_For_Param1, , 0>,
-    <@Param2, sysname, @p2> <Datatype_For_Param2, , int> = <Default_Value_For_Param2, , 0>
+    @CountryName NVARCHAR(15)
 )
 AS
 BEGIN
@@ -21,7 +19,21 @@ BEGIN
     -- interfering with SELECT statements.
     SET NOCOUNT ON
 
+    DECLARE @CustomerCount int;
+    DECLARE @SupplierCount int;
+
     -- Insert statements for procedure here
-    SELECT <@Param1, sysname, @p1>, <@Param2, sysname, @p2>
+    SELECT @CustomerCount = COUNT(*)  
+    FROM Customers
+    WHERE Country = @CountryName;
+
+    SELECT @SupplierCount = COUNT(*) 
+    FROM Suppliers
+    WHERE Country = @CountryName;
+
+    -- final select is the result of the stored procedure
+    SELECT 
+        @CustomerCount AS CustomerCount, 
+        @SupplierCount AS SupplierCount
 END
 GO
