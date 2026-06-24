@@ -87,7 +87,29 @@ WHERE Email IN (
 )
 ORDER BY Email;
 
+-- finding items that have changed
 
+SELECT * FROM ak_Users
+UNION
+SELECT * FROM ak_UsersArchive;
+
+UPDATE ak_UsersArchive
+SET Active = 0
+WHERE Id = 16;
+
+-- Exercise - 9.53
+-- devise a query to find the records that are in both tables
+-- but are different.
+
+SELECT 
+    * 
+FROM ak_Users u 
+INNER JOIN ak_UsersArchive ua 
+ON u.Id = ua.Id
+WHERE 
+u.Name <> ua.Name 
+OR u.Email <> ua.Email 
+OR u.Active <> ua.Active;
 
 
 
