@@ -17,6 +17,11 @@ SELECT TOP 5
 FROM ak_Users
 ORDER BY Id DESC;
 
+SELECT TOP 10
+    *
+FROM ak_UserPurchases
+ORDER BY PurchaseId DESC;
+
 SELECT TOP 5 
     * 
 FROM ak_UsersArchive

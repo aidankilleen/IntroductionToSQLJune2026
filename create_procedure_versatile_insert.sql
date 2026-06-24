@@ -5,9 +5,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
--- Author:      <Author, , Name>
--- Create Date: <Create Date, , >
--- Description: <Description, , >
+-- Author:      Aidan
+-- Create Date: 24/6/2026
+-- Description: Insert a user using an id or not
 -- =============================================
 CREATE OR ALTER PROCEDURE akVersatileInsert
 (
@@ -45,9 +45,15 @@ BEGIN
         END
 
         -- insert some sample transactions for this user
-        INSERT INTO ak_UserPurchases
-        (UserId, PurchaseDate, Amount)
-        VALUES(@Id, GETDATE(), 9.99);
+        DECLARE @Counter int = 1;
+        WHILE @Counter <= 5
+        BEGIN
+            INSERT INTO ak_UserPurchases
+            (UserId, PurchaseDate, Amount)
+            VALUES(@Id, GETDATE(), CAST(RAND()*100 AS DECIMAL(10,2)));
+
+            SET @Counter = @Counter + 1;
+        END
 
     END TRY
     BEGIN CATCH
